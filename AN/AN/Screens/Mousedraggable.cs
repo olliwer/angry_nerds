@@ -11,8 +11,14 @@ using Microsoft.Xna.Framework.Media;
 
 namespace AN
 {
+
+    //<Summary> Object is responsible for..? 
+
     class Mousedraggable : Sprite
     {
+
+        #region properties 
+
         const string NERD_ASSETNAME = "tux";
         const int START_POSITION_X = 125;
         const int START_POSITION_Y = 245;
@@ -25,11 +31,20 @@ namespace AN
         Vector2 launchAngle = Vector2.Zero;
         public float launchPower = 0.0f;
 
+        #endregion
+
+        #region load
+
         public void LoadContent(ContentManager theContentManager)
         {
             Position = launchPadCoordinates;
             base.LoadContent(theContentManager, NERD_ASSETNAME);
         }
+
+        #endregion
+
+        #region UpdateMethods 
+
         public void Update(GameTime theGameTime)
         {
             UpdateMouse();
@@ -90,5 +105,9 @@ namespace AN
             }
 
         }
+
+        #endregion
+
+
     }
 }

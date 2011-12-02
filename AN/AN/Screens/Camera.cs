@@ -156,7 +156,7 @@ namespace AN
                 Position.Y = Viewport.Top / Zoom;
    
    
-            if (Position.X > WorldRect.Width - Viewport.Right / Zoom);
+            if (Position.X > WorldRect.Width - Viewport.Right / Zoom)
 
                 Position.X = WorldRect.Width - Viewport.Right / Zoom;
 

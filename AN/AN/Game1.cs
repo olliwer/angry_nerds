@@ -8,6 +8,9 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using GameStateManagement;
+
+
 
 
 
@@ -19,203 +22,79 @@ namespace AN
     public class Game1 : Microsoft.Xna.Framework.Game
     {
 
-        Camera camera;
-        KeyboardState current;
+        #region Fields
+
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        //Sprite mSprite;
-        //Sprite mSpriteTwo;
-        //Nerd nerd;
-        Mousedraggable nerd;
        
+        ScreenManager screenManager;
+        
 
-        Sprite mBackgroundOne;
-        Sprite mBackgroundTwo;
-        Sprite mBackgroundThree;
-        Sprite mBackgroundFour;
-        Sprite mBackgroundFive;
-
-
-        public Game1()
+        // By preloading any assets used by UI rendering, we avoid framerate glitches
+        // when they suddenly need to be loaded in the middle of a menu transition.
+        static readonly string[] preloadAssets =
         {
-            camera = new Camera();
-            graphics = new GraphicsDeviceManager(this);
-
-            graphics.PreferredBackBufferWidth = 1200;
-            graphics.PreferredBackBufferHeight = 590;
-            Content.RootDirectory = "Content";
-            /*
-             * ONLY UNCOMMENT THESE IF YOU HAVE FBBDEPROFILER DOWNLOADED, AND IN THE REFERENCES!
-             * -noemj
-             */
-            graphics.GraphicsProfile = GraphicsProfile.Reach;
-            //fbDeprofiler.DeProfiler.Run();
-
-        }
-
-
-
-        /// <summary>
-        /// Allows the game to perform any initialization it needs to before starting to run.
-        /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
-        /// and initialize them as well.
-        /// </summary>
-        protected override void Initialize()
-        {
-            // TODO: Add your initialization logic here
-            this.IsMouseVisible = true;
-            //nerd = new Nerd();
-            nerd = new Mousedraggable();
-            //mSprite = new Sprite();
-            //mSpriteTwo = new Sprite();
-
-            mBackgroundOne = new Sprite();
-            mBackgroundOne.Scale = 2.0f;
-
-            mBackgroundTwo = new Sprite();
-            mBackgroundTwo.Scale = 2.0f;
-
-            mBackgroundThree = new Sprite();
-            mBackgroundThree.Scale = 2.0f;
-
-            mBackgroundFour = new Sprite();
-            mBackgroundFour.Scale = 2.0f;
-
-            mBackgroundFive = new Sprite();
-            mBackgroundFive.Scale = 2.0f;
-
-            base.Initialize();
-        }
-
-
-       
-
-        // Set the coordinates to draw the sprite at.
-        Vector2 spritePosition = Vector2.Zero;
-
-        // Store some information about the sprite's motion.
-        Vector2 spriteSpeed = new Vector2(50.0f, 50.0f);
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
-        /// 
-
-        protected override void LoadContent()
-        {
-
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-            nerd.LoadContent(this.Content);
-            //nerd.Position.X = 300;
-            //nerd.Position.Y = 300;
-
-            // TODO: use this.Content to load your game content here
-            //mSprite.LoadContent(this.Content, "birdy");
-            //mSprite.Position = new Vector2(125, 245);
-
-            //mSpriteTwo.LoadContent(this.Content, "birdy");
-            //mSpriteTwo.Position.X = 300;
-            //mSpriteTwo.Position.Y = 300;
-
-            mBackgroundOne.LoadContent(this.Content, "Background01");
-            mBackgroundOne.Position = new Vector2(0, 0);
-
-            mBackgroundTwo.LoadContent(this.Content, "Background02");
-            mBackgroundTwo.Position = new Vector2(mBackgroundOne.Position.X + mBackgroundOne.Size.Width, 0);
-
-            mBackgroundThree.LoadContent(this.Content, "Background03");
-            mBackgroundThree.Position = new Vector2(mBackgroundTwo.Position.X + mBackgroundTwo.Size.Width, 0);
-
-            mBackgroundFour.LoadContent(this.Content, "Background04");
-            mBackgroundFour.Position = new Vector2(mBackgroundThree.Position.X + mBackgroundThree.Size.Width, 0);
-
-            mBackgroundFive.LoadContent(this.Content, "Background05");
-            mBackgroundFive.Position = new Vector2(mBackgroundFour.Position.X + mBackgroundFour.Size.Width, 0);
-
-        }
-
-        /// <summary>
-        /// UnloadContent will be called once per game and is the place to unload
-        /// all content.
-        /// </summary>
-        protected override void UnloadContent()
-        {
-            // TODO: Unload any non ContentManager content here
-        }
-
-        /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Update(GameTime gameTime)
-        {
-
-            // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
-
-            current = Keyboard.GetState();
-            Camera.Update(current);
-   
-
-            // TODO: Add your update logic here
-            nerd.Update(gameTime);
-
-            Vector2 aDirection = new Vector2(-1, 0);
-            Vector2 aSpeed = new Vector2(160, 0);
-
-
-            base.Update(gameTime);
-        }
+            "gradient",
+        };
 
         
+        #endregion
+
+        #region Initialization
+
+
+        /// <summary>
+        /// The main game constructor.
+        /// </summary>
+        public Game1()
+        {
+            Content.RootDirectory = "Content";
+
+            graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = 853;
+            graphics.PreferredBackBufferHeight = 480;
+
+            // Create the screen manager component.
+            screenManager = new ScreenManager(this);
+
+            Components.Add(screenManager);
+
+            // Activate the first screens.
+            screenManager.AddScreen(new BackgroundScreen(), null);
+            screenManager.AddScreen(new MainMenuScreen(), null);
+        }
+
+
+        /// <summary>
+        /// Loads graphics content.
+        /// </summary>
+        protected override void LoadContent()
+        {
+            foreach (string asset in preloadAssets)
+            {
+                Content.Load<object>(asset);
+            }
+        }
+
+
+        #endregion
+
+        #region Draw
+
 
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            
-            graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
+            graphics.GraphicsDevice.Clear(Color.Black);
 
-            
-
-            spriteBatch.Begin();
-            /* FOR THE CAMERA..  Doesnt work yet.
-             * -noemj
-            spriteBatch.Begin(SpriteSortMode.Immediate,
-
-               BlendState.AlphaBlend,
-
-               null,
-
-               null,
-
-               null,
-
-               null,
-
-               Camera.TransformMatrix());
-
-            spriteBatch.End();
-            spriteBatch.Begin();
-             * */
-            mBackgroundOne.Draw(spriteBatch);
-            mBackgroundTwo.Draw(this.spriteBatch);
-            mBackgroundThree.Draw(this.spriteBatch);
-            mBackgroundFour.Draw(this.spriteBatch);
-            mBackgroundFive.Draw(this.spriteBatch);
-
-            nerd.Draw(this.spriteBatch);
-            //mSprite.Draw(this.spriteBatch);
-            //mSpriteTwo.Draw(this.spriteBatch);
-            spriteBatch.End();
-
+            // The real drawing happens inside the screen manager component.
             base.Draw(gameTime);
         }
+
+
+        #endregion
     }
+
+    
 }

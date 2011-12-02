@@ -12,6 +12,9 @@ namespace AN
 {
     class Nerd : Sprite
     {
+
+        #region properties 
+
         const string NERD_ASSETNAME = "tux";
         const int START_POSITION_X = 125;
         const int START_POSITION_Y = 245;
@@ -20,6 +23,10 @@ namespace AN
         const int MOVE_DOWN = 1;
         const int MOVE_LEFT = -1;
         const int MOVE_RIGHT = 1;
+
+   
+
+
         enum State
         {
             Walking
@@ -30,12 +37,21 @@ namespace AN
         Vector2 mSpeed = Vector2.Zero;
 
         KeyboardState mPreviousKeyboardState;
+        
+        #endregion
+
+        #region load
 
         public void LoadContent(ContentManager theContentManager)
         {
             Position = new Vector2(START_POSITION_X, START_POSITION_Y);
-            base.LoadContent(theContentManager, NERD_ASSETNAME);
+            base.LoadContent(theContentManager, "tux");
         }
+
+        #endregion
+
+        #region UpdateMethods
+
         public void Update(GameTime theGameTime)
         {
             KeyboardState aCurrentKeyboardState = Keyboard.GetState();
@@ -76,5 +92,7 @@ namespace AN
                 }
             }
         }
+        #endregion
+
     }
 }

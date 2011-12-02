@@ -6,9 +6,14 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
+//<Summary> Sprite objects is superclass for all graphics in the game <summary>
+
 
 class Sprite
 {
+
+    #region properties
+
     //The asset name for the Sprite's Texture
     public string AssetName;
 
@@ -25,12 +30,16 @@ class Sprite
     private Texture2D mSpriteTexture;
 
     //Load the texture for the sprite using the Content Pipeline
-    
+
+    #endregion 
+
+    #region publicMethods
 
     public void LoadContent(ContentManager theContentManager, string theAssetName)
     {
-        mSpriteTexture = theContentManager.Load<Texture2D>(theAssetName);
         AssetName = theAssetName;
+        mSpriteTexture = theContentManager.Load<Texture2D>(theAssetName);
+       
         Size = new Rectangle(0, 0, (int)(mSpriteTexture.Width * Scale), (int)(mSpriteTexture.Height * Scale));
     }
 
@@ -50,6 +59,9 @@ class Sprite
     {
         Position += theDirection * theSpeed * (float)theGameTime.ElapsedGameTime.TotalSeconds;
     }
+
+    #endregion
+
 }
    
 
