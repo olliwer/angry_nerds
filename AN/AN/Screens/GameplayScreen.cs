@@ -91,17 +91,19 @@ namespace GameStateManagement
             gameFont = content.Load<SpriteFont>("menufont");
            // spriteBatch = new SpriteBatch(GraphicsDevice);
 
-             //m‰‰rritell‰‰n tuxi
-             nerd = new Mousedraggable();
-             nerd.LoadContent(this.content);
-             nerd.Position.X = 300;
-             nerd.Position.Y = 300;
+ 
 
             //m‰‰ritell‰‰n background
             mBackgroundOne = new Sprite();
             mBackgroundOne.LoadContent(this.content, "Background01");
             mBackgroundOne.Position = new Vector2(0, 0);
             mBackgroundOne.Scale = 2;
+
+            //m‰‰rritell‰‰n tuxi
+            nerd = new Mousedraggable();
+            nerd.LoadContent(this.content);
+            nerd.Position.X = 300;
+            nerd.Position.Y = 300;
             
            // mBackgroundTwo.LoadContent(this.content, "Background02");
            // mBackgroundTwo.Position = new Vector2(mBackgroundOne.Position.X + mBackgroundOne.Size.Width, 0);
