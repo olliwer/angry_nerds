@@ -24,7 +24,7 @@ namespace AN
         const int MOVE_LEFT = -1;
         const int MOVE_RIGHT = 1;
 
-   
+		int testi;
 
 
         enum State
