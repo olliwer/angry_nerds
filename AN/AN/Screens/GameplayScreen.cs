@@ -52,16 +52,12 @@ namespace GameStateManagement
         SpriteBatch spriteBatch;
 
         Nerd nerd;
+ 
 
         Sprite mBackgroundOne;
-        Sprite mBackgroundTwo;
-        Sprite mBackgroundThree;
-        Sprite mBackgroundFour;
-        Sprite mBackgroundFive;
 
-        //Sprite mSprite;
-        //Sprite mSpriteTwo;
-        //Nerd nerd;
+        Sprite target;
+  
    
         #endregion
 
@@ -105,6 +101,14 @@ namespace GameStateManagement
             nerd.LoadContent(this.content);
             nerd.Position.X = 800;
             nerd.Position.Y = 300;
+
+            //tarkoitus tehdä tästä "possu"
+            target = new Sprite();
+            target.LoadContent(this.content, "birdy");
+            target.Position = new Vector2(0, 0);
+            target.Scale = 0.4F;
+            target.Position.X = 900;
+            target.Position.Y = 600;
             
            // mBackgroundTwo.LoadContent(this.content, "Background02");
            // mBackgroundTwo.Position = new Vector2(mBackgroundOne.Position.X + mBackgroundOne.Size.Width, 0);
@@ -202,6 +206,7 @@ namespace GameStateManagement
                 nerd.Update(gameTime);
 
 
+
                 Vector2 aDirection = new Vector2(-1, 0);
                 Vector2 aSpeed = new Vector2(160, 0);
 
@@ -294,6 +299,7 @@ namespace GameStateManagement
             
             mBackgroundOne.Draw(spriteBatch);
             nerd.Draw(spriteBatch);
+            target.Draw(spriteBatch);
 
             spriteBatch.End();
 

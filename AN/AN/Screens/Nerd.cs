@@ -25,11 +25,14 @@ namespace AN
         Boolean maassa = false;
         Vector2 mouseStart;
         Vector2 mouseEnd;
-        Vector2 nerdPosition;
+        public static Vector2 nerdPosition;
         Vector2 liike;
         float vauhti = 0;
         double aika = -5;
 		int testi;
+
+        //Luodaan nerdin ympärille rectangle, jolla toteutetaan osuminen.
+        public static Rectangle nerdRectangle = new Rectangle((int)nerdPosition.X, (int)nerdPosition.Y, 50, 60);
 
 
         enum State
