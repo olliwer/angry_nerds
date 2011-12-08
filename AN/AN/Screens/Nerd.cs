@@ -19,10 +19,6 @@ namespace AN
         const int START_POSITION_X = 125;
         const int START_POSITION_Y = 645;
         const int NERD_SPEED = 160;
-        const int MOVE_UP = -1;
-        const int MOVE_DOWN = 1;
-        const int MOVE_LEFT = -1;
-        const int MOVE_RIGHT = 1;
 
         Boolean painettuna = false;
         Boolean ammuttu = false;
@@ -69,7 +65,6 @@ namespace AN
             KeyboardState aCurrentKeyboardState = Keyboard.GetState();
             MouseState aCurrentMouseState = Mouse.GetState();
 
-            UpdateMovement(aCurrentKeyboardState);
             UpdateMouseMovement(aCurrentMouseState);
             Position = nerdPosition;
             mPreviousKeyboardState = aCurrentKeyboardState;
@@ -77,36 +72,8 @@ namespace AN
             //base.Update(theGameTime, mSpeed, mDirection);
         }
 
-        private void UpdateMovement(KeyboardState aCurrentKeyboardState)
-        {
-            if (mCurrentState == State.Walking)
-            {
-                mSpeed = Vector2.Zero;
-                mDirection = Vector2.Zero;
-
-                if (aCurrentKeyboardState.IsKeyDown(Keys.Left) == true)
-                {
-                    mSpeed.X = NERD_SPEED;
-                    mDirection.X = MOVE_LEFT;
-                }
-                else if (aCurrentKeyboardState.IsKeyDown(Keys.Right) == true)
-                {
-                    mSpeed.X = NERD_SPEED;
-                    mDirection.X = MOVE_RIGHT;
-                }
-
-                if (aCurrentKeyboardState.IsKeyDown(Keys.Up) == true)
-                {
-                    mSpeed.Y = NERD_SPEED;
-                    mDirection.Y = MOVE_UP;
-                }
-                else if (aCurrentKeyboardState.IsKeyDown(Keys.Down) == true)
-                {
-                    mSpeed.Y = NERD_SPEED;
-                    mDirection.Y = MOVE_DOWN;
-                }
-            }
-        }
+  
+        
 
         //Checks mouse movements for shooting Nerd
         private void UpdateMouseMovement(MouseState aCurrentMouseState)
@@ -151,11 +118,6 @@ namespace AN
                     
             }
          
-            
-               
-            
-
-
         }
 
 
