@@ -53,9 +53,9 @@ namespace GameStateManagement
         public override void LoadContent()
         {
             if (content == null)
-                content = new ContentManager(ScreenManager.Game.Services, "Content");
+                content = new ContentManager(ScreenManager.Game.Services, "Content/GraphicsContent");
 
-            backgroundTexture = content.Load<Texture2D>("Background01");
+            backgroundTexture = content.Load<Texture2D>("menuBackGround");
         }
 
 

@@ -51,7 +51,7 @@ namespace GameStateManagement
    
         SpriteBatch spriteBatch;
 
-        Mousedraggable nerd;
+        Nerd nerd;
 
         Sprite mBackgroundOne;
         Sprite mBackgroundTwo;
@@ -75,6 +75,7 @@ namespace GameStateManagement
         {
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
+            
         }
 
 
@@ -97,12 +98,12 @@ namespace GameStateManagement
             mBackgroundOne = new Sprite();
             mBackgroundOne.LoadContent(this.content, "Background01");
             mBackgroundOne.Position = new Vector2(0, 0);
-            mBackgroundOne.Scale = 2;
+            mBackgroundOne.Scale = 1;
 
             //m‰‰rritell‰‰n tuxi
-            nerd = new Mousedraggable();
+            nerd = new Nerd();
             nerd.LoadContent(this.content);
-            nerd.Position.X = 300;
+            nerd.Position.X = 800;
             nerd.Position.Y = 300;
             
            // mBackgroundTwo.LoadContent(this.content, "Background02");
@@ -273,6 +274,11 @@ namespace GameStateManagement
         }
 
 
+
+
+
+
+
         /// <summary>
         /// Draws the gameplay screen.
         /// </summary>
@@ -285,13 +291,9 @@ namespace GameStateManagement
            
             spriteBatch.Begin();
             //piirret‰‰n nˆrtti ja tausta.. t‰h‰n voisi v‰‰nt‰‰ sellaisen systeemin ett‰ pistet‰‰n kaikki piirrett‰v‰t systeemit listaan ja iteroidaan niille piirtofunktio
+            
             mBackgroundOne.Draw(spriteBatch);
             nerd.Draw(spriteBatch);
-            
-
-          //  spriteBatch.DrawString(gameFont, "// TODO", playerPosition, Color.Green);
-
-         //   spriteBatch.DrawString(gameFont, "Insert Gameplay Here", enemyPosition, Color.DarkRed);
 
             spriteBatch.End();
 

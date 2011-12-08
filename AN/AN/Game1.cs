@@ -50,8 +50,8 @@ namespace AN
             Content.RootDirectory = "Content";
 
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = 853;
-            graphics.PreferredBackBufferHeight = 480;
+            graphics.PreferredBackBufferWidth = 1024;
+            graphics.PreferredBackBufferHeight = 768;
 
             // Create the screen manager component.
             screenManager = new ScreenManager(this);
@@ -61,6 +61,7 @@ namespace AN
             // Activate the first screens.
             screenManager.AddScreen(new BackgroundScreen(), null);
             screenManager.AddScreen(new MainMenuScreen(), null);
+            this.IsMouseVisible = true;
         }
 
 
