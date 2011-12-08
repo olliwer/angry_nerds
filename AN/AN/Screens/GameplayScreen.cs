@@ -52,11 +52,12 @@ namespace GameStateManagement
         SpriteBatch spriteBatch;
 
         Nerd nerd;
+        Sika target;
  
 
         Sprite mBackgroundOne;
 
-        Sprite target;
+
   
    
         #endregion
@@ -103,10 +104,8 @@ namespace GameStateManagement
             nerd.Position.Y = 300;
 
             //tarkoitus tehdä tästä "possu"
-            target = new Sprite();
-            target.LoadContent(this.content, "birdy");
-            target.Position = new Vector2(0, 0);
-            target.Scale = 0.4F;
+            target = new Sika();
+            target.LoadContent(this.content);
             target.Position.X = 900;
             target.Position.Y = 600;
             
@@ -204,6 +203,7 @@ namespace GameStateManagement
 
                 // TODO: Add your update logic here
                 nerd.Update(gameTime);
+                target.Update(gameTime);
 
 
 

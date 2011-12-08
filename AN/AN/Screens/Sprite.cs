@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 //<Summary> Sprite objects is superclass for all graphics in the game <summary>
 
 
+
 class Sprite
 {
 
@@ -29,7 +30,6 @@ class Sprite
     //The texture object used when drawing the sprite
     private Texture2D mSpriteTexture;
 
-    //Load the texture for the sprite using the Content Pipeline
 
     #endregion 
 

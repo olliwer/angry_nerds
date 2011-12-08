@@ -35,11 +35,11 @@ namespace AN
         public static Rectangle nerdRectangle = new Rectangle((int)nerdPosition.X, (int)nerdPosition.Y, 50, 60);
 
 
+
         enum State
         {
             Walking
         }
-        State mCurrentState = State.Walking;
 
         Vector2 mDirection = Vector2.Zero;
         Vector2 mSpeed = Vector2.Zero;
