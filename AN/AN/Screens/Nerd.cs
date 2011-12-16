@@ -27,9 +27,12 @@ namespace AN
         Vector2 mouseEnd;
         public static Vector2 nerdPosition;
         Vector2 liike;
+
         float vauhti = 0;
         double aika = -5;
 		int testi;
+
+       public  Boolean osui = false; //checks if game is in state where it should move to next level.
 
         //Luodaan nerdin ympärille rectangle, jolla toteutetaan osuminen.
         public static Rectangle nerdRectangle = new Rectangle((int)nerdPosition.X, (int)nerdPosition.Y, 50, 60);
@@ -111,8 +114,17 @@ namespace AN
             //vielä yksi metodi lisää jossa painettuna on true, jotta saadaan nörtti liikkumaan hiiren mukana kun nappi painettuna
             if (aCurrentMouseState.LeftButton == ButtonState.Pressed && painettuna == true && ammuttu == false)
             {
-                nerdPosition.X = aCurrentMouseState.X;
-                nerdPosition.Y = aCurrentMouseState.Y;
+                //nerdPosition.X = aCurrentMouseState.X;
+                // Effect for shotoin tux. now tux doesnt move as much as mouse, so its maybe feels little bit more like pulling a sling.            
+                int apuX = (int)(mouseStart.X - aCurrentMouseState.X)/2; // venymis efekti linkoon, jos halutaan että se on linko D: Voisi korvata jollain jännällä neliöjuurifunktiolla, jotta muutos menisi jossain kohti lähelle nollaa
+                nerdPosition.X = mouseStart.X - apuX;
+                if (nerdPosition.X > mouseStart.X) nerdPosition.X = mouseStart.X; // katsotaan ettei voi venytellä nerdiä kuin alas ja vasemmalla
+
+                //nerdPosition.Y = aCurrentMouseState.Y;
+                int apuY = (int)(aCurrentMouseState.Y - mouseStart.Y) / 2; 
+                nerdPosition.Y = mouseStart.Y + apuY;
+                
+                if (nerdPosition.Y < mouseStart.Y) nerdPosition.Y = mouseStart.Y;
             }
 
             if ( ammuttu == true && maassa ==false)
@@ -142,11 +154,19 @@ namespace AN
             double painovoimakiihtyvyys = 0.98;
             liike.X = 2; //kertoo kuinka jyrkästi x-akselin suuntaan ammus lähtee.. mitä isompi niin sitä jyrkempi
             liike.Y = 30; //kertoo kuinka jyrkkään y akselin suuntaan ammus lähtee.. mitä pienempi arvo niin sitä jyrkempi
-          
+
+            int apuX = 0; //HelpIntegers to define angle of shot
+            int apuY = 0;
+
+            apuX  = (int)(mouseStart.X - mouseEnd.X) / 80;
+            liike.X = apuX;
+
+            apuY = (int)(mouseEnd.Y - mouseStart.Y)/2;
+            liike.Y = apuY;
 
             // Ammuksen lentorata on paraabeli, jonka y-arvo lasketaan kaavalla:
             //y = t * ut
-            x = ((liike.X * aika) * aika)+500;
+            x = ((liike.X * aika) * aika)+645;
 
             // ja x-arvo lasketaan kaavalla:
             y =  (painovoimakiihtyvyys * (aika * aika)) + (liike.Y * aika )-400 ;
@@ -159,8 +179,13 @@ namespace AN
            aika= (aika+0.08);
 
             //tähän pitäisi hahmotella jokin systeemi huomaamaan jos ammus on jo maassa.
-           if (y == 460) maassa = true;
+           if (nerdPosition.Y == 800) maassa = true;
        
+        }
+
+        public void toNextLevel(){
+           // GameplayScreen.nextlevel();
+
         }
 
 
