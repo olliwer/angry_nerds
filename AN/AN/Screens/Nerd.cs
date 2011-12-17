@@ -39,11 +39,6 @@ namespace AN
 
 
 
-        enum State
-        {
-            Walking
-        }
-
         Vector2 mDirection = Vector2.Zero;
         Vector2 mSpeed = Vector2.Zero;
 
@@ -115,7 +110,7 @@ namespace AN
             if (aCurrentMouseState.LeftButton == ButtonState.Pressed && painettuna == true && ammuttu == false)
             {
                 //nerdPosition.X = aCurrentMouseState.X;
-                // Effect for shotoin tux. now tux doesnt move as much as mouse, so its maybe feels little bit more like pulling a sling.            
+                // Effect for shooting tux. now tux doesnt move as much as mouse, so it maybe feels little bit more like pulling a sling.            
                 int apuX = (int)(mouseStart.X - aCurrentMouseState.X)/2; // venymis efekti linkoon, jos halutaan että se on linko D: Voisi korvata jollain jännällä neliöjuurifunktiolla, jotta muutos menisi jossain kohti lähelle nollaa
                 nerdPosition.X = mouseStart.X - apuX;
                 if (nerdPosition.X > mouseStart.X) nerdPosition.X = mouseStart.X; // katsotaan ettei voi venytellä nerdiä kuin alas ja vasemmalla
