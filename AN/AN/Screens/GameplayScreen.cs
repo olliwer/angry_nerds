@@ -202,6 +202,7 @@ namespace GameStateManagement
 
 
                 // TODO: Add your update logic here
+                
                 nerd.Update(gameTime);
                 target.Update(gameTime);
 
