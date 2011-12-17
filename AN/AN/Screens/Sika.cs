@@ -14,8 +14,8 @@ namespace AN
     {
         int positionX;
         int positionY;
-        public static Vector2 sikaPosition;
-        public Rectangle sikaRectangle = new Rectangle((int)sikaPosition.X, (int)sikaPosition.Y, 5, 6);
+        Vector2 sikaPosition;
+        public Rectangle sikaRectangle;
         public bool sikaHit = false;
 
  
@@ -25,6 +25,7 @@ namespace AN
             base.LoadContent(theContentManager, "birdy");
             sikaPosition.X = x;
             sikaPosition.Y = y;
+            sikaRectangle = new Rectangle((int)sikaPosition.X, (int)sikaPosition.Y, 5, 6);
 
         }
 

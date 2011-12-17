@@ -41,6 +41,8 @@ namespace GameStateManagement
         KeyboardState current;
         Nerd nerd;
         Sika target;
+        Sika target2;
+        Sika target3;
  
         Sprite mBackgroundOne;
 
@@ -94,9 +96,15 @@ namespace GameStateManagement
             //tarkoitus tehdä tästä "possu"
             target = new Sika();
             target.Scale = 0.5F;
-            target.LoadContent(this.content, 800, 300);
-            
-            
+            target.LoadContent(this.content, 800, 500);
+
+            target2 = new Sika();
+            target2.Scale = 0.5F;
+            target2.LoadContent(this.content, 700, 600);
+
+            target3 = new Sika();
+            target3.Scale = 0.5F;
+            target3.LoadContent(this.content, 700, 300);
 
   
     
@@ -159,6 +167,8 @@ namespace GameStateManagement
 
                 nerd.Update(gameTime);
                 target.Update(gameTime);
+                target2.Update(gameTime);
+                target3.Update(gameTime);
                 if (target.sikaRectangle.Intersects(nerd.nerdRectangle)){
                     target.sikaHit = true;
                     target.Scale = 0.1F;
@@ -235,6 +245,8 @@ namespace GameStateManagement
             mBackgroundOne.Draw(spriteBatch);
             nerd.Draw(spriteBatch);
             target.Draw(spriteBatch);
+            target2.Draw(spriteBatch);
+            target3.Draw(spriteBatch);
 
             spriteBatch.End();
 
