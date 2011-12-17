@@ -16,8 +16,8 @@ namespace AN
         #region properties 
 
         const string NERD_ASSETNAME = "tux";
-        const int START_POSITION_X = 125;
-        const int START_POSITION_Y = 645;
+        public int positionX;
+        public int positionY;
         const int NERD_SPEED = 160;
 
         Boolean painettuna = false;
@@ -35,7 +35,7 @@ namespace AN
        public  Boolean osui = false; //checks if game is in state where it should move to next level.
 
         //Luodaan nerdin ympärille rectangle, jolla toteutetaan osuminen.
-        public static Rectangle nerdRectangle = new Rectangle((int)nerdPosition.X, (int)nerdPosition.Y, 50, 60);
+        public Rectangle nerdRectangle = new Rectangle((int)nerdPosition.X, (int)nerdPosition.Y, 5, 6);
 
 
 
@@ -48,12 +48,12 @@ namespace AN
 
         #region load
 
-        public void LoadContent(ContentManager theContentManager)
+        public void LoadContent(ContentManager theContentManager, int x, int y)
         {
-            Position = new Vector2(START_POSITION_X, START_POSITION_Y);
+            Position = new Vector2(positionX, positionY);
             base.LoadContent(theContentManager, "tux");
-            nerdPosition.X = START_POSITION_X;
-            nerdPosition.Y = START_POSITION_Y;
+            nerdPosition.X = x;
+            nerdPosition.Y = y;
 
         }
 
