@@ -138,7 +138,7 @@ namespace AN
         }
         private void laskeAmmuksenLentorata()
         {                         
-            double painovoimakiihtyvyys = 2;
+            double painovoimakiihtyvyys = 0.5;
 
             nerdPosition.Y = (int)(-(liike.Y * aika) + 645 + (aika * aika * painovoimakiihtyvyys));           
             nerdPosition.X = (int)(liike.X * aika+125);           
