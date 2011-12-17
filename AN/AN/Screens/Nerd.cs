@@ -133,28 +133,20 @@ namespace AN
         }      
         private void laskeliike()
         {
-            liike.X = Math.Abs(mouseStart.X - mouseEnd.X)/10;
-            liike.Y = Math.Abs(mouseStart.Y - mouseEnd.Y)/10;     
+            liike.X = Math.Abs(mouseStart.X - mouseEnd.X)/8;
+            liike.Y = Math.Abs(mouseStart.Y - mouseEnd.Y)/8;     
         }
         private void laskeAmmuksenLentorata()
-        {         
-            double x = 0;
-            double y = 0;           
+        {                         
             double painovoimakiihtyvyys = 2;
-             
-            y = -(liike.Y * aika) + 645 + (aika*aika*painovoimakiihtyvyys);
 
-           
-            x = liike.X * aika+125;
-
-            nerdPosition.Y = (int)y;
-            nerdPosition.X = (int)x;
-
+            nerdPosition.Y = (int)(-(liike.Y * aika) + 645 + (aika * aika * painovoimakiihtyvyys));           
+            nerdPosition.X = (int)(liike.X * aika+125);           
 
            //kertoo ammuksen nopeuden ajan suhteen. tämän voisi fixata toimimaan gametimen perusteella, mutta on nyt vakio testausta varten
            aika= (aika+0.16);
 
-            //tähän pitäisi hahmotella jokin systeemi huomaamaan jos ammus on jo maassa.
+           //onko ammus maassa?
            if (nerdPosition.Y > 700)
            {
                maassa = true;
