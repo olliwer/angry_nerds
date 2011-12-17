@@ -72,15 +72,13 @@ namespace GameStateManagement
 
               //Sets nerd that you can shoot pigs or whatever you wanna shoot
               nerd = new Nerd();
-              nerd.LoadContent(this.content);
-              nerd.Position.X = 800;
-              nerd.Position.Y = 300;
+              nerd.LoadContent(this.content, 300, 300);
+            
 
               //tarkoitus tehdä tästä "possu"
               target = new Sika();
-              target.LoadContent(this.content);
-              target.Position.X = 900;
-              target.Position.Y = 600;
+              target.LoadContent(this.content, 500, 600);
+ 
 
 
 

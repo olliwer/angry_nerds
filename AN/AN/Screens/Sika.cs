@@ -12,23 +12,26 @@ namespace AN
 {
     class Sika : Sprite
     {
-        const int START_POSITION_X = 600;
-        const int START_POSITION_Y = 500;
-        public static Vector2 sikaPosition;
-        public static Rectangle sikaRectangle = new Rectangle((int)sikaPosition.X, (int)sikaPosition.Y, 50, 60);
+        int positionX;
+        int positionY;
+        Vector2 sikaPosition;
+        public Rectangle sikaRectangle;
+        public bool sikaHit = false;
 
-
-        public void LoadContent(ContentManager theContentManager)
+ 
+        public void LoadContent(ContentManager theContentManager, int x, int y)
         {
-            Position = new Vector2(START_POSITION_X, START_POSITION_Y);
+            Position = new Vector2(positionX, positionY);
             base.LoadContent(theContentManager, "birdy");
-            sikaPosition.X = START_POSITION_X;
-            sikaPosition.Y = START_POSITION_Y;
+            sikaPosition.X = x;
+            sikaPosition.Y = y;
+            sikaRectangle = new Rectangle((int)sikaPosition.X, (int)sikaPosition.Y, 5, 6);
 
         }
 
         public void Update(GameTime theGameTime)
         {
+
             Position = sikaPosition;
         }
     }

@@ -16,8 +16,8 @@ namespace AN
         #region properties 
 
         const string NERD_ASSETNAME = "tux";
-        const int START_POSITION_X = 125;
-        const int START_POSITION_Y = 645;
+        public int positionX;
+        public int positionY;
         const int NERD_SPEED = 160;
 
         Boolean painettuna = false;
@@ -35,14 +35,9 @@ namespace AN
        public  Boolean osui = false; //checks if game is in state where it should move to next level.
 
         //Luodaan nerdin ympärille rectangle, jolla toteutetaan osuminen.
-        public static Rectangle nerdRectangle = new Rectangle((int)nerdPosition.X, (int)nerdPosition.Y, 50, 60);
+        public Rectangle nerdRectangle = new Rectangle((int)nerdPosition.X, (int)nerdPosition.Y, 5, 6);
 
 
-
-        enum State
-        {
-            Walking
-        }
 
         Vector2 mDirection = Vector2.Zero;
         Vector2 mSpeed = Vector2.Zero;
@@ -53,12 +48,12 @@ namespace AN
 
         #region load
 
-        public void LoadContent(ContentManager theContentManager)
+        public void LoadContent(ContentManager theContentManager, int x, int y)
         {
-            Position = new Vector2(START_POSITION_X, START_POSITION_Y);
+            Position = new Vector2(positionX, positionY);
             base.LoadContent(theContentManager, "tux");
-            nerdPosition.X = START_POSITION_X;
-            nerdPosition.Y = START_POSITION_Y;
+            nerdPosition.X = x;
+            nerdPosition.Y = y;
 
         }
 
@@ -114,7 +109,7 @@ namespace AN
             if (aCurrentMouseState.LeftButton == ButtonState.Pressed && painettuna == true && ammuttu == false)
             {
                 //nerdPosition.X = aCurrentMouseState.X;
-                // Effect for shotoin tux. now tux doesnt move as much as mouse, so its maybe feels little bit more like pulling a sling.            
+                // Effect for shooting tux. now tux doesnt move as much as mouse, so it maybe feels little bit more like pulling a sling.            
                 int apuX = (int)(mouseStart.X - aCurrentMouseState.X)/2; // venymis efekti linkoon, jos halutaan että se on linko D: Voisi korvata jollain jännällä neliöjuurifunktiolla, jotta muutos menisi jossain kohti lähelle nollaa
                 nerdPosition.X = mouseStart.X - apuX;
                 if (nerdPosition.X > mouseStart.X) nerdPosition.X = mouseStart.X; // katsotaan ettei voi venytellä nerdiä kuin alas ja vasemmalla
