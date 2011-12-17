@@ -29,17 +29,27 @@ namespace GameStateManagement
         {
             // Create our menu entries.
             MenuEntry playGameMenuEntry = new MenuEntry("Play Game");
-            MenuEntry optionsMenuEntry = new MenuEntry("Options");
+           // MenuEntry optionsMenuEntry = new MenuEntry("Options");
+            
+            //lataaminen
+            MenuEntry LoadMenuEntry = new MenuEntry("Load saved game");
+            
             MenuEntry exitMenuEntry = new MenuEntry("Exit");
 
             // Hook up menu event handlers.
             playGameMenuEntry.Selected += PlayGameMenuEntrySelected;
-            optionsMenuEntry.Selected += OptionsMenuEntrySelected;
+           // optionsMenuEntry.Selected += OptionsMenuEntrySelected;
+
+            LoadMenuEntry.Selected += LoadMenuEntrySelected;
+            
             exitMenuEntry.Selected += OnCancel;
 
             // Add entries to the menu.
             MenuEntries.Add(playGameMenuEntry);
-            MenuEntries.Add(optionsMenuEntry);
+            //MenuEntries.Add(optionsMenuEntry);
+
+            MenuEntries.Add(LoadMenuEntry);
+
             MenuEntries.Add(exitMenuEntry);
         }
 
@@ -57,6 +67,20 @@ namespace GameStateManagement
             LoadingScreen.Load(ScreenManager, true, e.PlayerIndex,
                                new GameplayScreen());
         }
+
+
+
+        void LoadMenuEntrySelected(object sencer, PlayerIndexEventArgs e)
+        {
+         //ei tee viel‰ mit‰‰n.
+            ScreenManager.AddScreen(new LoadScreen(), e.PlayerIndex);
+        }
+
+
+
+
+
+
 
 
         /// <summary>

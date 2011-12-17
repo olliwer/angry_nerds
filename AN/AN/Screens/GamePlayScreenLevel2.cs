@@ -1,36 +1,27 @@
-#region File Description
-//-----------------------------------------------------------------------------
-// GameplayScreen.cs
-//
-// Microsoft XNA Community Game Platform
-// Copyright (C) Microsoft Corporation. All rights reserved.
-//-----------------------------------------------------------------------------
-#endregion
+Ôªø#region usingStatements
 
-#region Using Statements
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using AN;
+
 #endregion
+
+//next level in the game
 
 namespace GameStateManagement
 {
-    /// <summary>
-    /// This screen implements the actual game logic. It is just a
-    /// placeholder to get the idea across: you'll probably want to
-    /// put some more interesting gameplay in here!
-    /// </summary>
-    class GameplayScreen : GameScreen
+    class GamePlayScreenLevel2 : GameScreen
     {
 
+        #region fields
 
-        #region Fields
-
-        
         ContentManager content;
         SpriteFont gameFont;
 
@@ -46,21 +37,13 @@ namespace GameStateManagement
         Sika target;
         Sprite mBackgroundOne;
 
-        Boolean nextlevel = false;
-
-       // Camera camera;       
-        //GraphicsDeviceManager graphics;
-       // SpriteBatch spriteBatch;
-
         #endregion
 
-        #region Initialization
 
+        #region intialization
 
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        public GameplayScreen()
+            //Constructori
+          public GamePlayScreenLevel2()
         {
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
@@ -68,93 +51,67 @@ namespace GameStateManagement
         }
 
 
-        /// <summary>
-        /// Load graphics content for the game.
-        /// </summary>
-        public override void LoadContent()
-        {
-            if (content == null)
-            {
-                content = new ContentManager(ScreenManager.Game.Services, "Content/GraphicsContent");
-            }
 
-            gameFont = content.Load<SpriteFont>("menufont");
-           // spriteBatch = new SpriteBatch(GraphicsDevice);
+          public override void LoadContent()
+          {
+              if (content == null)
+              {
+                  content = new ContentManager(ScreenManager.Game.Services, "Content/GraphicsContent");
+              }
 
- 
-
-            //m‰‰ritell‰‰n background
-            mBackgroundOne = new Sprite();
-            mBackgroundOne.LoadContent(this.content, "Background01");
-            mBackgroundOne.Position = new Vector2(0, 0);
-            mBackgroundOne.Scale = 1;
-
-            //m‰‰rritell‰‰n tuxi
-            nerd = new Nerd();
-            nerd.LoadContent(this.content);
-            nerd.Position.X = 800;
-            nerd.Position.Y = 300;
-
-            //tarkoitus tehd‰ t‰st‰ "possu"
-            target = new Sika();
-            target.LoadContent(this.content);
-            target.Position.X = 900;
-            target.Position.Y = 600;
-            
-           // mBackgroundTwo.LoadContent(this.content, "Background02");
-           // mBackgroundTwo.Position = new Vector2(mBackgroundOne.Position.X + mBackgroundOne.Size.Width, 0);
-
-            //mBackgroundThree.LoadContent(this.Content, "Background03");
-            //mBackgroundThree.Position = new Vector2(mBackgroundTwo.Position.X + mBackgroundTwo.Size.Width, 0);
-
-            //mBackgroundFour.LoadContent(this.Content, "Background04");
-            //mBackgroundFour.Position = new Vector2(mBackgroundThree.Position.X + mBackgroundThree.Size.Width, 0);
-
-            //mBackgroundFive.LoadContent(this.Content, "Background05");
-            //mBackgroundFive.Position = new Vector2(mBackgroundFour.Position.X + mBackgroundFour.Size.Width, 0);
-
-
-            //lintu
+              gameFont = content.Load<SpriteFont>("menufont");
+              // spriteBatch = new SpriteBatch(GraphicsDevice);
 
 
 
-           //t‰m‰n voi poistaa lopullisesta, mutta antaa paremman fiiliksen kun load screeni n‰kyy hetken :)
-            Thread.Sleep(1000);
+              //m√§√§ritell√§√§n background
+              mBackgroundOne = new Sprite();
+              mBackgroundOne.LoadContent(this.content, "Background02");
+              mBackgroundOne.Position = new Vector2(0, 0);
+              mBackgroundOne.Scale = 1;
 
-            // once the load has finished, we use ResetElapsedTime to tell the game's
-            // timing mechanism that we have just finished a very long frame, and that
-            // it should not try to catch up.
-            ScreenManager.Game.ResetElapsedTime();
+              //Sets nerd that you can shoot pigs or whatever you wanna shoot
+              nerd = new Nerd();
+              nerd.LoadContent(this.content);
+              nerd.Position.X = 800;
+              nerd.Position.Y = 300;
 
-
-
-            //vanhasta luokasta revitut d‰d‰t:
-
-            // Create a new SpriteBatch, which can be used to draw textures.
-
-            //mit‰ n‰ill‰ tehd‰‰n?
-            //mSprite.LoadContent(this.Content, "birdy");
-            //mSprite.Position = new Vector2(125, 245);
-
-            //mSpriteTwo.LoadContent(this.Content, "birdy");
-            //mSpriteTwo.Position.X = 300;
-            //mSpriteTwo.Position.Y = 300;
-
-  
-        }
+              //tarkoitus tehd√§ t√§st√§ "possu"
+              target = new Sika();
+              target.LoadContent(this.content);
+              target.Position.X = 900;
+              target.Position.Y = 600;
 
 
-        /// <summary>
-        /// Unload graphics content used by the game.
-        /// </summary>
-        public override void UnloadContent()
-        {
-            content.Unload();
-        }
+
+
+              //t√§m√§n voi poistaa lopullisesta, mutta antaa paremman fiiliksen kun load screeni n√§kyy hetken :)
+              Thread.Sleep(1000);
+
+              // once the load has finished, we use ResetElapsedTime to tell the game's
+              // timing mechanism that we have just finished a very long frame, and that
+              // it should not try to catch up.
+              ScreenManager.Game.ResetElapsedTime();
+
+
+          }
+
+
+          public override void UnloadContent()
+          {
+              content.Unload();
+          }
+
+
 
         #endregion
 
-        #region Update and Draw
+
+        #region UpdateAndDraw
+
+
+
+       
 
 
         /// <summary>
@@ -186,23 +143,17 @@ namespace GameStateManagement
 
                 enemyPosition = Vector2.Lerp(enemyPosition, targetPosition, 0.05f);
 
-             
+                // TODO: this game isn't very fun! You could probably improve
+                // it by inserting something more interesting in this space :-)
 
                 current = Keyboard.GetState();
                 Camera.Update(current);
 
 
                 // TODO: Add your update logic here
-                
-
                 nerd.Update(gameTime);
                 target.Update(gameTime);
 
-                if (nerd.osui == true)
-                {
-                 //hoidetaan levelin unloadi ja uuden loadi
-                  //  NextLevel;
-                }
 
 
                 Vector2 aDirection = new Vector2(-1, 0);
@@ -212,21 +163,13 @@ namespace GameStateManagement
 
 
 
+   
+           
+
+
             //base.Update(gameTime);
         
         }
-
-
-
-
-        void NextLevel(PlayerIndexEventArgs e)
-        {
-        LoadingScreen.Load(ScreenManager, true, e.PlayerIndex,
-                                  new GameplayScreen());
-        }
-
-
-
 
 
         /// <summary>
@@ -285,7 +228,7 @@ namespace GameStateManagement
         }
 
 
-        
+
 
         /// <summary>
         /// Draws the gameplay screen.
@@ -298,7 +241,7 @@ namespace GameStateManagement
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
            
             spriteBatch.Begin();
-            //piirret‰‰n nˆrtti ja tausta.. t‰h‰n voisi v‰‰nt‰‰ sellaisen systeemin ett‰ pistet‰‰n kaikki piirrett‰v‰t systeemit listaan ja iteroidaan niille piirtofunktio
+            //piirret√§√§n n√∂rtti ja tausta.. t√§h√§n voisi v√§√§nt√§√§ sellaisen systeemin ett√§ pistet√§√§n kaikki piirrett√§v√§t systeemit listaan ja iteroidaan niille piirtofunktio
             
             mBackgroundOne.Draw(spriteBatch);
             nerd.Draw(spriteBatch);
@@ -323,4 +266,8 @@ namespace GameStateManagement
 
         public ContentManager Content { get; set; }
     }
-}
+
+
+
+    }
+
