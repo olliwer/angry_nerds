@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace GameStateManagement
 {
+    //when player loses the game this screen is shown
     class DefeatMenuScreen : MenuScreen
     {
         public DefeatMenuScreen()
