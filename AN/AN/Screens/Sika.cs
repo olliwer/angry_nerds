@@ -15,7 +15,7 @@ namespace AN
 {
     class Sika : Sprite
     {
-        public int value;
+        public int value = 0;
         Vector2 sikaPosition;
         public Rectangle sikaRectangle;
         public bool sikaHit = false;

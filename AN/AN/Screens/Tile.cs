@@ -39,8 +39,8 @@ namespace AN
             if (tileHit == true)
             {        
                 base.Update(theGameTime, 1, Position);
-                tilePosition.X--;
-                tilePosition.Y--;
+                tilePosition.X++;
+                tilePosition.Y++;
             }
 
             tileRectangle = new Rectangle((int)tilePosition.X, (int)tilePosition.Y, 20, 10);
