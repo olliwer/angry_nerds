@@ -43,8 +43,7 @@ namespace AN
             }           
             tileRectangle = new Rectangle((int)Position.X, (int)Position.Y, 20, 10);
                 tilePosition.X++;
-                tilePosition.Y++;
-            }
+                tilePosition.Y++;           
 
             tileRectangle = new Rectangle((int)tilePosition.X, (int)tilePosition.Y, 20, 10);
         }
