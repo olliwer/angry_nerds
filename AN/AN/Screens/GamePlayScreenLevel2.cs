@@ -75,9 +75,7 @@ namespace GameStateManagement
               nerd.LoadContent(this.content, 300, 300);
             
 
-              //tarkoitus tehdä tästä "possu"
-              target = new Sika();
-              target.LoadContent(this.content, 500, 600);
+
  
 
 

@@ -53,7 +53,7 @@ namespace GameStateManagement
  
         Sprite mBackgroundOne;
 
-        Boolean nextlevel = false;
+       // Boolean nextlevel = false;
 
        // Camera camera;       
         //GraphicsDeviceManager graphics;
@@ -107,17 +107,17 @@ namespace GameStateManagement
             target = new Sika();
             target.value = 3;
             target.Scale = 0.5F;
-            target.LoadContent(this.content, 800, 500);
+            target.LoadContent(this.content, 800, 500, "birdy");
 
             target2 = new Sika();
-            target2.Scale = 0.5F;
+            target2.Scale = 1;
             target2.value = 5;
-            target2.LoadContent(this.content, 700, 600);
+            target2.LoadContent(this.content, 700, 600, "tux");
 
             target3 = new Sika();
             target3.Scale = 0.5F;
             target3.value = 10;
-            target3.LoadContent(this.content, 700, 300);
+            target3.LoadContent(this.content, 700, 300, "birdy");
 
   
     
@@ -205,12 +205,6 @@ namespace GameStateManagement
                 }
 
 
-                if (nerd.osui == true)
-                {
-                    //hoidetaan levelin unloadi ja uuden loadi
-                    //  NextLevel;
-                }
-
 
                 Vector2 aDirection = new Vector2(-1, 0);
                 Vector2 aSpeed = new Vector2(160, 0);
@@ -221,13 +215,13 @@ namespace GameStateManagement
 
             //base.Update(gameTime);
    
-
+        /*
         void NextLevel(PlayerIndexEventArgs e)
         {
         LoadingScreen.Load(ScreenManager, true, e.PlayerIndex,
                                   new GameplayScreen());
         }
-
+        */
 
 
 
@@ -293,7 +287,7 @@ namespace GameStateManagement
 
             spriteBatch.DrawString(
             gameFont,
-            "Ammukset: " + ammukset.ToString(),
+            "Projectiles: " + ammukset.ToString(),
             new Vector2(
             300,
             10.0f),
