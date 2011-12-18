@@ -51,6 +51,12 @@ namespace GameStateManagement
         Sika target2;
         Sika target3;
         Tile wall;
+        Tile wall2;
+        Tile wall3;
+        Tile wall4;
+        Tile wall5;
+        Tile wall6;
+        Tile wall7;
         Sprite mBackgroundOne;
 
        // Boolean nextlevel = false;
@@ -120,8 +126,25 @@ namespace GameStateManagement
             target3.LoadContent(this.content, 700, 300, "birdy");
 
             wall = new Tile();
-            wall.LoadContent(this.content, 400, 500, "birdy");
-            
+            wall.LoadContent(this.content, 400, 500, "tile3");
+
+            wall2 = new Tile();
+            wall2.LoadContent(this.content, 400, 530, "tile3");
+
+            wall3 = new Tile();
+            wall3.LoadContent(this.content, 400, 560, "tile3");
+
+            wall4 = new Tile();
+            wall4.LoadContent(this.content, 400, 590, "tile3");
+
+            wall5 = new Tile();
+            wall5.LoadContent(this.content, 400, 620, "tile3");
+
+            wall6 = new Tile();
+            wall6.LoadContent(this.content, 400, 650, "tile3");
+
+            wall7 = new Tile();
+            wall7.LoadContent(this.content, 400, 680, "tile3");
                
     
 
@@ -189,6 +212,15 @@ namespace GameStateManagement
                 target2.Update(gameTime);
                 target3.Update(gameTime);
                 wall.Update(gameTime);
+                wall2.Update(gameTime);
+                wall3.Update(gameTime);
+                wall4.Update(gameTime);
+                wall5.Update(gameTime);
+                wall6.Update(gameTime);
+                wall7.Update(gameTime);
+                /*
+                 * Collision detection
+                 */
                 if (target.sikaRectangle.Intersects(nerd.nerdRectangle) && !target.sikaHit)
                 {
                     target.sikaHit = true;
@@ -282,6 +314,12 @@ namespace GameStateManagement
             target2.Draw(spriteBatch);
             target3.Draw(spriteBatch);
             wall.Draw(spriteBatch);
+            wall2.Draw(spriteBatch);
+            wall3.Draw(spriteBatch);
+            wall4.Draw(spriteBatch);
+            wall5.Draw(spriteBatch);
+            wall6.Draw(spriteBatch);
+            wall7.Draw(spriteBatch);
 
             //For drawing the points
             spriteBatch.DrawString( 
