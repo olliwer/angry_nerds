@@ -108,15 +108,17 @@ namespace AN
             {
                 //nerdPosition.X = aCurrentMouseState.X;
                 // Effect for shooting tux. now tux doesnt move as much as mouse, so it maybe feels little bit more like pulling a sling.            
-                int apuX = (int)(mouseStart.X - aCurrentMouseState.X) / 2; // venymis efekti linkoon, jos halutaan että se on linko D: Voisi korvata jollain jännällä neliöjuurifunktiolla, jotta muutos menisi jossain kohti lähelle nollaa
-                nerdPosition.X = mouseStart.X - apuX;
-                if (nerdPosition.X > mouseStart.X) nerdPosition.X = mouseStart.X; // katsotaan ettei voi venytellä nerdiä kuin alas ja vasemmalla
+               
+                if (aCurrentMouseState.X < nerdStartPosition.X)
+                {
+                    nerdPosition.X = aCurrentMouseState.X;
+                }
 
-                //nerdPosition.Y = aCurrentMouseState.Y;
-                int apuY = (int)(aCurrentMouseState.Y - mouseStart.Y) / 2;
-                nerdPosition.Y = mouseStart.Y + apuY;
+                if (aCurrentMouseState.Y > nerdStartPosition.Y)
+                {
+                    nerdPosition.Y = aCurrentMouseState.Y;
+                }
 
-                if (nerdPosition.Y < mouseStart.Y) nerdPosition.Y = mouseStart.Y;
             }
 
             else if (ammuttu == true && maassa == false)
