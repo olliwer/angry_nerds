@@ -12,17 +12,19 @@ namespace AN
 {
     class Sika : Sprite
     {
-        int positionX;
-        int positionY;
         public int value;
         Vector2 sikaPosition;
         public Rectangle sikaRectangle;
         public bool sikaHit = false;
 
+        //uutta roinaa
+        private Texture2D mSpriteTexture;
+        public float Scale = 1.0f;
+
  
         public void LoadContent(ContentManager theContentManager, int x, int y)
         {
-            Position = new Vector2(positionX, positionY);
+            Position = new Vector2(x, y);
             base.LoadContent(theContentManager, "birdy");
             sikaPosition.X = x;
             sikaPosition.Y = y;
