@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace GameStateManagement
 {
-
+    //loading screen is shown when start game is selected
     class LoadingScreen : GameScreen
     {
         #region Fields
@@ -30,6 +30,7 @@ namespace GameStateManagement
 
             TransitionOnTime = TimeSpan.FromSeconds(0.5);
         }
+        //displays loading screen
         public static void Load(ScreenManager screenManager, bool loadingIsSlow,
                                 PlayerIndex? controllingPlayer,
                                 params GameScreen[] screensToLoad)
@@ -70,7 +71,7 @@ namespace GameStateManagement
         }
 
 
-
+        //draw screen
         public override void Draw(GameTime gameTime)
         {
 
@@ -79,7 +80,7 @@ namespace GameStateManagement
             {
                 otherScreensAreGone = true;
             }
-
+            //if load time is long the loading screen is shown
             if (loadingIsSlow)
             {
                 SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
