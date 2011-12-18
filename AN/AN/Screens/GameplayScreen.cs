@@ -34,6 +34,13 @@ namespace GameStateManagement
         ContentManager content;
         SpriteFont gameFont;
 
+        //PISTEIDENLASKUA VARTEN
+        int points = 0;
+
+
+
+
+        //
         Random random = new Random();
 
         float pauseAlpha;
@@ -77,6 +84,8 @@ namespace GameStateManagement
             {
                 content = new ContentManager(ScreenManager.Game.Services, "Content/GraphicsContent");
             }
+ 
+
 
             gameFont = content.Load<SpriteFont>("menufont");
            // spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -172,18 +181,21 @@ namespace GameStateManagement
                 if (target.sikaRectangle.Intersects(nerd.nerdRectangle)){
                     target.sikaHit = true;
                     target.Scale = 0.1F;
+                    points++;
                 }
 
                 if (target2.sikaRectangle.Intersects(nerd.nerdRectangle))
                 {
                     target2.sikaHit = true;
                     target2.Scale = 0.1F;
+                    points++;
                 }
 
                 if (target3.sikaRectangle.Intersects(nerd.nerdRectangle))
                 {
                     target3.sikaHit = true;
                     target3.Scale = 0.1F;
+                    points++;
                 }
 
 
@@ -253,13 +265,25 @@ namespace GameStateManagement
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
            
             spriteBatch.Begin();
-            //piirret‰‰n nˆrtti ja tausta.. t‰h‰n voisi v‰‰nt‰‰ sellaisen systeemin ett‰ pistet‰‰n kaikki piirrett‰v‰t systeemit listaan ja iteroidaan niille piirtofunktio
 
+
+
+
+            //piirret‰‰n nˆrtti ja tausta.. t‰h‰n voisi v‰‰nt‰‰ sellaisen systeemin ett‰ pistet‰‰n kaikki piirrett‰v‰t systeemit listaan ja iteroidaan niille piirtofunktio
             mBackgroundOne.Draw(spriteBatch);
             nerd.Draw(spriteBatch);
             target.Draw(spriteBatch);
             target2.Draw(spriteBatch);
             target3.Draw(spriteBatch);
+
+            //For drawing the points
+            spriteBatch.DrawString( 
+            gameFont, 
+            "Points: " + points.ToString(),
+            new Vector2( 
+            450,
+            10.0f),
+            Color.Black); 
 
             spriteBatch.End();
 
