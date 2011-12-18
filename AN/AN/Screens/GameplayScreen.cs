@@ -255,30 +255,37 @@ namespace GameStateManagement
 
                 if (wall.tileRectangle.Intersects(nerd.nerdRectangle))
                 {
+                    wall.reset(gameTime);
                     nerd.reset();
                 }
                 if (wall2.tileRectangle.Intersects(nerd.nerdRectangle))
                 {
+                    wall2.reset(gameTime);
                     nerd.reset();
                 }
                 if (wall3.tileRectangle.Intersects(nerd.nerdRectangle))
                 {
+                    wall3.reset(gameTime);
                     nerd.reset();
                 }
                 if (wall4.tileRectangle.Intersects(nerd.nerdRectangle))
                 {
+                    wall4.reset(gameTime);
                     nerd.reset();
                 }
                 if (wall5.tileRectangle.Intersects(nerd.nerdRectangle))
                 {
+                    wall5.reset(gameTime);
                     nerd.reset();
                 }
                 if (wall6.tileRectangle.Intersects(nerd.nerdRectangle))
                 {
+                    wall6.reset(gameTime);
                     nerd.reset();
                 }
                 if (wall7.tileRectangle.Intersects(nerd.nerdRectangle))
                 {
+                    wall7.reset(gameTime);
                     nerd.reset();
                 }
 

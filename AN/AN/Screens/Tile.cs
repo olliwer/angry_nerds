@@ -14,8 +14,8 @@ namespace AN
     {
         Vector2 tilePosition;
         public Rectangle tileRectangle;
-        public bool sikaHit = false;
-
+        public bool tileHit = false;
+        public int positionY;
 
         public void LoadContent(ContentManager theContentManager, int x, int y, String assetName)
         {
@@ -25,9 +25,25 @@ namespace AN
             tilePosition.Y = y;
         }
 
+ 
+        public void reset(GameTime theGameTime)
+        {
+            tileHit = true;
+            Position = new Vector2(tilePosition.X, tilePosition.Y);
+            base.Update(theGameTime, 1, Position);
+            positionY = (int)tilePosition.Y;
+        }
+
         public void Update(GameTime theGameTime)
         {
-            tileRectangle = new Rectangle((int)tilePosition.X, (int)tilePosition.Y, 5, 6);
+            if (tileHit == true)
+            {
+                base.Update(theGameTime, 1, Position);
+                
+                //Position = new Vector2(-100, -100);
+            }
+
+            tileRectangle = new Rectangle((int)tilePosition.X, (int)tilePosition.Y, 20, 10);
         }
     }
 }
