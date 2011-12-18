@@ -156,6 +156,10 @@ namespace AN
                 maassa = true;
                 nerdPosition.Y = 700;
             }
+            if (nerdPosition.X > 1000 || nerdPosition.Y < -100)
+            {
+                reset();
+            }
         }
         public void reset()
         {
