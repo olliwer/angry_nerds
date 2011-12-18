@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,11 +13,9 @@ namespace AN
     class Nerd : Sprite
     {
 
-        #region properties 
+        #region properties
 
         const string NERD_ASSETNAME = "tux";
-        public int positionX;
-        public int positionY;
         const int NERD_SPEED = 160;
 
         Boolean painettuna = false;
@@ -26,35 +24,32 @@ namespace AN
         Vector2 mouseStart;
         Vector2 mouseEnd;
         public static Vector2 nerdPosition;
+        public static Vector2 nerdStartPosition;
         Vector2 liike;
 
-        float vauhti = 0;
         double aika = 0;
-		int testi;
+        int ammukset = 3;
 
-       public  Boolean osui = false; //checks if game is in state where it should move to next level.
+        public Boolean osui = false; //checks if game is in state where it should move to next level.
 
         //Luodaan nerdin ympärille rectangle, jolla toteutetaan osuminen.
         public Rectangle nerdRectangle = new Rectangle((int)nerdPosition.X, (int)nerdPosition.Y, 5, 6);
-
-
 
         Vector2 mDirection = Vector2.Zero;
         Vector2 mSpeed = Vector2.Zero;
 
         KeyboardState mPreviousKeyboardState;
-        
+
         #endregion
 
         #region load
 
         public void LoadContent(ContentManager theContentManager, int x, int y)
         {
-            Position = new Vector2(positionX, positionY);
             base.LoadContent(theContentManager, "tux");
             nerdPosition.X = x;
             nerdPosition.Y = y;
-
+            nerdStartPosition = nerdPosition;
         }
 
         #endregion
@@ -73,15 +68,15 @@ namespace AN
             //base.Update(theGameTime, mSpeed, mDirection);
         }
 
-  
-        
+
+
 
         //Checks mouse movements for shooting Nerd
         private void UpdateMouseMovement(MouseState aCurrentMouseState)
         {
 
             //jos hiiren vasen namikka alhaalla, niin aloitetaan virittäminen
-            if (aCurrentMouseState.LeftButton == ButtonState.Pressed && painettuna == false && ammuttu ==false)
+            if (aCurrentMouseState.LeftButton == ButtonState.Pressed && painettuna == false && ammuttu == false)
             {
                 //sets mouse start position 
                 mouseStart.X = aCurrentMouseState.X;
@@ -96,7 +91,7 @@ namespace AN
 
 
             // kun hiirin vasen namikka päästetään
-            if (aCurrentMouseState.LeftButton == ButtonState.Released && painettuna == true && ammuttu == false)
+            else if (aCurrentMouseState.LeftButton == ButtonState.Released && painettuna == true && ammuttu == false)
             {
                 mouseEnd.X = aCurrentMouseState.X;
                 mouseEnd.Y = aCurrentMouseState.Y;
@@ -106,56 +101,62 @@ namespace AN
                 laskeliike();
             }
             //vielä yksi metodi lisää jossa painettuna on true, jotta saadaan nörtti liikkumaan hiiren mukana kun nappi painettuna
-            if (aCurrentMouseState.LeftButton == ButtonState.Pressed && painettuna == true && ammuttu == false)
+            else if (aCurrentMouseState.LeftButton == ButtonState.Pressed && painettuna == true && ammuttu == false)
             {
                 //nerdPosition.X = aCurrentMouseState.X;
                 // Effect for shooting tux. now tux doesnt move as much as mouse, so it maybe feels little bit more like pulling a sling.            
-                int apuX = (int)(mouseStart.X - aCurrentMouseState.X)/2; // venymis efekti linkoon, jos halutaan että se on linko D: Voisi korvata jollain jännällä neliöjuurifunktiolla, jotta muutos menisi jossain kohti lähelle nollaa
+                int apuX = (int)(mouseStart.X - aCurrentMouseState.X) / 2; // venymis efekti linkoon, jos halutaan että se on linko D: Voisi korvata jollain jännällä neliöjuurifunktiolla, jotta muutos menisi jossain kohti lähelle nollaa
                 nerdPosition.X = mouseStart.X - apuX;
                 if (nerdPosition.X > mouseStart.X) nerdPosition.X = mouseStart.X; // katsotaan ettei voi venytellä nerdiä kuin alas ja vasemmalla
 
                 //nerdPosition.Y = aCurrentMouseState.Y;
-                int apuY = (int)(aCurrentMouseState.Y - mouseStart.Y) / 2; 
+                int apuY = (int)(aCurrentMouseState.Y - mouseStart.Y) / 2;
                 nerdPosition.Y = mouseStart.Y + apuY;
-                
+
                 if (nerdPosition.Y < mouseStart.Y) nerdPosition.Y = mouseStart.Y;
             }
 
-            if ( ammuttu == true && maassa ==false)
+            else if (ammuttu == true && maassa == false)
             {
-                laskeAmmuksenLentorata();             
+                laskeAmmuksenLentorata();
             }
-            if (ammuttu == true && maassa == true)
+            else if (ammuttu == true && maassa == true && ammukset > 1)
             {
+                nerdPosition = nerdStartPosition;
+                maassa = false;
+                ammuttu = false;
+                painettuna = false;
+                aika = 0;
+                ammukset--;
+            }
 
-            }
-         
-        }      
+        }
         private void laskeliike()
         {
-            liike.X = Math.Abs(mouseStart.X - mouseEnd.X)/8;
-            liike.Y = Math.Abs(mouseStart.Y - mouseEnd.Y)/8;     
+            liike.X = Math.Abs(mouseStart.X - mouseEnd.X) / 8;
+            liike.Y = Math.Abs(mouseStart.Y - mouseEnd.Y) / 8;
         }
         private void laskeAmmuksenLentorata()
-        {                         
-            double painovoimakiihtyvyys = 0.5;
+        {
+            double painovoimakiihtyvyys = 1.2;
 
-            nerdPosition.Y = (int)(-(liike.Y * aika) + 645 + (aika * aika * painovoimakiihtyvyys));           
-            nerdPosition.X = (int)(liike.X * aika+125);           
+            nerdPosition.Y = (int)(-(liike.Y * aika) + nerdStartPosition.Y + (aika * aika * painovoimakiihtyvyys));
+            nerdPosition.X = (int)(liike.X * aika + nerdStartPosition.X);
 
-           //kertoo ammuksen nopeuden ajan suhteen. tämän voisi fixata toimimaan gametimen perusteella, mutta on nyt vakio testausta varten
-           aika= (aika+0.16);
+            //kertoo ammuksen nopeuden ajan suhteen. tämän voisi fixata toimimaan gametimen perusteella, mutta on nyt vakio testausta varten
+            aika = (aika + 0.16);
 
-           //onko ammus maassa?
-           if (nerdPosition.Y > 700)
-           {
-               maassa = true;
-               nerdPosition.Y = 700;
-           }
+            //onko ammus maassa?
+            if (nerdPosition.Y > 700)
+            {
+                maassa = true;
+                nerdPosition.Y = 700;
+            }
         }
 
-        public void toNextLevel(){
-           // GameplayScreen.nextlevel();
+        public void toNextLevel()
+        {
+            // GameplayScreen.nextlevel();
 
         }
 
