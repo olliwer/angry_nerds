@@ -291,7 +291,7 @@ namespace GameStateManagement
 
             spriteBatch.DrawString(
             gameFont,
-            "Projectiles: " + ammukset.ToString(),
+            "Ammukset: " + ammukset.ToString(),
             new Vector2(
             300,
             10.0f),

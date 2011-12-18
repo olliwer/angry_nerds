@@ -38,7 +38,7 @@ namespace AN
         public void LoadContent(ContentManager theContentManager)
         {
             Position = launchPadCoordinates;
-            base.LoadContent(theContentManager, NERD_ASSETNAME);
+            //base.LoadContent(theContentManager, NERD_ASSETNAME);
         }
 
         #endregion
