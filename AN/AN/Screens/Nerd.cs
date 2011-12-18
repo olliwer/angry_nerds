@@ -79,7 +79,7 @@ namespace AN
         {
 
             //jos hiiren vasen namikka alhaalla, niin aloitetaan virittäminen
-            if (aCurrentMouseState.LeftButton == ButtonState.Pressed && painettuna == false && ammuttu == false && aCurrentMouseState.X > 130 && aCurrentMouseState.X < 180 && aCurrentMouseState.Y < 620 && aCurrentMouseState.Y > 580)
+            if (aCurrentMouseState.LeftButton == ButtonState.Pressed && painettuna == false && ammuttu == false && aCurrentMouseState.X > 130 && aCurrentMouseState.X < 200 && aCurrentMouseState.Y < 660 && aCurrentMouseState.Y > 550)
             {
                 //sets mouse start position 
                 mouseStart.X = aCurrentMouseState.X;

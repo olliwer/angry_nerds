@@ -221,11 +221,9 @@ namespace GameStateManagement
                 target3.Update(gameTime);
                 target4.Update(gameTime);
                 target5.Update(gameTime);
+               
+                 
                 wall.Update(gameTime);
-
-
- 
-
                 wall2.Update(gameTime);
                 wall3.Update(gameTime);
                 wall4.Update(gameTime);
