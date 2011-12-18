@@ -26,6 +26,7 @@ namespace AN
         public static Vector2 nerdPosition;
         public static Vector2 nerdStartPosition;
         Vector2 liike;
+        public Rectangle nerdRectangle;
         
 
         double aika = 0;
@@ -35,7 +36,7 @@ namespace AN
         public Boolean osui = false; //checks if game is in state where it should move to next level.
 
         //Luodaan nerdin ympärille rectangle, jolla toteutetaan osuminen.
-        public Rectangle nerdRectangle = new Rectangle((int)nerdPosition.X, (int)nerdPosition.Y, 50, 100);
+         
 
         Vector2 mDirection = Vector2.Zero;
         Vector2 mSpeed = Vector2.Zero;
@@ -65,6 +66,7 @@ namespace AN
 
             UpdateMouseMovement(aCurrentMouseState);
             Position = nerdPosition;
+            nerdRectangle = new Rectangle((int)nerdPosition.X, (int)nerdPosition.Y, 50, 100);
             mPreviousKeyboardState = aCurrentKeyboardState;
 
             //base.Update(theGameTime, mSpeed, mDirection);

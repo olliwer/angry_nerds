@@ -24,14 +24,13 @@ namespace AN
             base.LoadContent(theContentManager, assetName, x, y);
             sikaPosition.X = x;
             sikaPosition.Y = y;
-            sikaRectangle = new Rectangle((int)sikaPosition.X, (int)sikaPosition.Y, 5, 6);
-
         }
 
         public void Update(GameTime theGameTime)
         {
 
             Position = sikaPosition;
+            sikaRectangle = new Rectangle((int)sikaPosition.X, (int)sikaPosition.Y, 5, 6);
         }
     }
 
