@@ -120,7 +120,7 @@ namespace GameStateManagement
             target3.LoadContent(this.content, 700, 300, "birdy");
 
             wall = new Tile();
-            wall.LoadContent(this.content, 400, 500, "birdy");
+            wall.LoadContent(this.content, 400, 500, "tile2");
             
                
     
@@ -165,7 +165,7 @@ namespace GameStateManagement
             base.Update(gameTime, otherScreenHasFocus, false);
 
 
-            ammukset = nerd.ammukset;
+            
 
 
             // Gradually fade in or out depending on whether we are covered by the pause screen.
@@ -189,6 +189,11 @@ namespace GameStateManagement
                 target2.Update(gameTime);
                 target3.Update(gameTime);
                 wall.Update(gameTime);
+
+                if (wall.tileRectangle.Intersects(nerd.nerdRectangle))
+                {
+                    nerd.reset();
+                }
                 if (target.sikaRectangle.Intersects(nerd.nerdRectangle) && !target.sikaHit)
                 {
                     target.sikaHit = true;
@@ -209,7 +214,7 @@ namespace GameStateManagement
                     target3.Scale = 0.1F;
                     points = points + target3.value;
                 }
-
+                ammukset = nerd.ammukset;
 
 
                 Vector2 aDirection = new Vector2(-1, 0);

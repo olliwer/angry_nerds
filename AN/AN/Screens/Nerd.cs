@@ -15,7 +15,6 @@ namespace AN
 
         #region properties
 
-        const string NERD_ASSETNAME = "tux";
         const int NERD_SPEED = 160;
 
         Boolean painettuna = false;
@@ -126,12 +125,11 @@ namespace AN
             }
             else if (ammuttu == true && maassa == true && ammukset > 1)
             {
-                nerdPosition = nerdStartPosition;
-                maassa = false;
-                ammuttu = false;
-                painettuna = false;
-                aika = 0;
-                ammukset--;
+                reset();
+            }
+            else if (ammuttu == true && maassa == true && ammukset == 1)
+            {
+                ammukset = 0;
             }
 
         }
@@ -156,6 +154,15 @@ namespace AN
                 maassa = true;
                 nerdPosition.Y = 700;
             }
+        }
+        public void reset()
+        {
+            nerdPosition = nerdStartPosition;
+            maassa = false;
+            ammuttu = false;
+            painettuna = false;
+            aika = 0;
+            ammukset--;
         }
 
         public void toNextLevel()
