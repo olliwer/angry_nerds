@@ -46,16 +46,8 @@ namespace GameStateManagement
          * Current objects and backgrounds
          */ 
         Nerd nerd;
-        Sika target;
-        Sika target2;
-        Sika target3;
-        Tile wall;
-        Tile wall2;
-        Tile wall3;
-        Tile wall4;
-        Tile wall5;
-        Tile wall6;
-        Tile wall7;
+        Sika target, target2, target3, target4, target5;
+        Tile wall, wall2, wall3, wall4, wall5, wall6, wall7;
         Sprite mBackgroundOne;
 
         /*
@@ -111,18 +103,28 @@ namespace GameStateManagement
              */
             target = new Sika();
             target.value = 3;
-            target.Scale = 0.5F;
+            target.Scale = 0.3F;
             target.LoadContent(this.content, 800, 500, "birdy");
 
             target2 = new Sika();
-            target2.Scale = 1;
+            target2.Scale = 0.3F;
             target2.value = 5;
-            target2.LoadContent(this.content, 700, 600, "dota");
+            target2.LoadContent(this.content, 700, 600, "birdy");
 
             target3 = new Sika();
-            target3.Scale = 0.5F;
+            target3.Scale = 0.3F;
             target3.value = 10;
-            target3.LoadContent(this.content, 700, 300, "hon");
+            target3.LoadContent(this.content, 700, 300, "birdy");
+
+            target4 = new Sika();
+            target4.Scale = 0.3F;
+            target4.value = 7;
+            target4.LoadContent(this.content, 480, 550, "birdy");
+
+            target5 = new Sika();
+            target5.Scale = 0.3F;
+            target5.value = 10;
+            target5.LoadContent(this.content, 500, 200, "birdy");
 
             wall = new Tile();
 
@@ -217,6 +219,8 @@ namespace GameStateManagement
                 target.Update(gameTime);
                 target2.Update(gameTime);
                 target3.Update(gameTime);
+                target4.Update(gameTime);
+                target5.Update(gameTime);
                 wall.Update(gameTime);
 
 
@@ -249,6 +253,20 @@ namespace GameStateManagement
                     target3.hit(gameTime);
                     points = points + target3.value;
                 }
+
+                if (target4.sikaRectangle.Intersects(nerd.nerdRectangle) && !target.sikaHit)
+                {
+                    target4.hit(gameTime);
+                    points = points + target4.value;
+                }
+                
+                 if (target5.sikaRectangle.Intersects(nerd.nerdRectangle) && !target.sikaHit)
+                {
+                    target5.hit(gameTime);
+                    points = points + target5.value;
+                }
+
+
 
                 if (wall.tileRectangle.Intersects(nerd.nerdRectangle))
                 {
@@ -295,7 +313,7 @@ namespace GameStateManagement
                 /*
                  * To win the game you need over 10 points.
                  */
-                if (points> 10)
+                if (points> 13)
                 {
                     ScreenManager.AddScreen(new VictoryMenuScreen(), ControllingPlayer);
                 }
@@ -362,6 +380,8 @@ namespace GameStateManagement
             target.Draw(spriteBatch);
             target2.Draw(spriteBatch);
             target3.Draw(spriteBatch);
+            target4.Draw(spriteBatch);
+            target5.Draw(spriteBatch);
             wall.Draw(spriteBatch);
             wall2.Draw(spriteBatch);
             wall3.Draw(spriteBatch);
