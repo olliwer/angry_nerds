@@ -40,13 +40,13 @@ namespace AN
         {
             if (sikaHit == true)
             {
-                base.Update(theGameTime, 1, Position);
+                base.Update(theGameTime, 3, Position);
                 sikaPosition.X--;
                 sikaPosition.Y--;
             }
 
             Position = sikaPosition;
-            sikaRectangle = new Rectangle((int)sikaPosition.X, (int)sikaPosition.Y, 20, 50);
+            sikaRectangle = new Rectangle((int)sikaPosition.X, (int)sikaPosition.Y, 20, 60);
         }
     }
 
