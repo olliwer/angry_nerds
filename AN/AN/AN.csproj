@@ -110,7 +110,7 @@
   <ItemGroup>
     <Compile Include="Game1.cs" />
     <Compile Include="Screens\Camera.cs" />
-    <None Include="Screens\DefeatMenuScreen" />
+    <Compile Include="Screens\DefeatMenuScreen.cs" />
     <Compile Include="Screens\Tile.cs" />
     <Compile Include="Screens\LoadingScreen.cs" />
     <Compile Include="Screens\LoadScreen.cs" />

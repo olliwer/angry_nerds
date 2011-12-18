@@ -295,6 +295,11 @@ namespace GameStateManagement
                 {
                     ScreenManager.AddScreen(new VictoryMenuScreen(), ControllingPlayer);
                 }
+
+                if (ammukset < 1)
+                {
+                    ScreenManager.AddScreen(new DefeatMenuScreen(), ControllingPlayer);
+                }
                 
 
 
