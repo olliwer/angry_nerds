@@ -196,7 +196,7 @@ namespace GameStateManagement
                     target2.Scale = 0.1F;
                     points = points + target2.value;
                 }
-
+                //Console.Write(target3.sikaRectangle.Intersects(nerd.nerdRectangle));
                 if (target3.sikaRectangle.Intersects(nerd.nerdRectangle))
                 {
                     target3.sikaHit = true;
