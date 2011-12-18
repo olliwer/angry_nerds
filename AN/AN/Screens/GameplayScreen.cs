@@ -169,6 +169,7 @@ namespace GameStateManagement
             if (coveredByOtherScreen)
                 pauseAlpha = Math.Min(pauseAlpha + 1f / 32, 1);
             else
+            {
                 pauseAlpha = Math.Max(pauseAlpha - 1f / 32, 0);
 
 
@@ -176,13 +177,14 @@ namespace GameStateManagement
                 Camera.Update(current);
 
 
-                
+
 
                 nerd.Update(gameTime);
                 target.Update(gameTime);
                 target2.Update(gameTime);
                 target3.Update(gameTime);
-                if (target.sikaRectangle.Intersects(nerd.nerdRectangle)){
+                if (target.sikaRectangle.Intersects(nerd.nerdRectangle))
+                {
                     target.sikaHit = true;
                     target.Scale = 0.1F;
                     points = points + target.value;
@@ -205,15 +207,15 @@ namespace GameStateManagement
 
                 if (nerd.osui == true)
                 {
-                 //hoidetaan levelin unloadi ja uuden loadi
-                  //  NextLevel;
+                    //hoidetaan levelin unloadi ja uuden loadi
+                    //  NextLevel;
                 }
 
 
                 Vector2 aDirection = new Vector2(-1, 0);
                 Vector2 aSpeed = new Vector2(160, 0);
-
             }
+        }
 
 
 
