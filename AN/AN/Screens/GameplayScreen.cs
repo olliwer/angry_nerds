@@ -208,7 +208,7 @@ namespace GameStateManagement
 
 
                 current = Keyboard.GetState();
-                Camera.Update(current);
+          
 
 
 
