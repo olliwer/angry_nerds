@@ -395,7 +395,7 @@ namespace GameStateManagement
             gameFont, 
             "Points: " + points.ToString(),
             new Vector2( 
-            600,
+            700,
             10.0f),
             Color.Black);
 
@@ -403,7 +403,15 @@ namespace GameStateManagement
             gameFont,
             "Projectiles: " + ammukset.ToString(),
             new Vector2(
-            300,
+            400,
+            10.0f),
+            Color.Black);
+
+            spriteBatch.DrawString(
+            gameFont,
+            "Points to beat: " + 14,
+            new Vector2(
+            100,
             10.0f),
             Color.Black); 
 
