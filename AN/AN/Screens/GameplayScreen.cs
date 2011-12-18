@@ -50,7 +50,7 @@ namespace GameStateManagement
         Sika target;
         Sika target2;
         Sika target3;
- 
+        Tile wall;
         Sprite mBackgroundOne;
 
        // Boolean nextlevel = false;
@@ -118,8 +118,11 @@ namespace GameStateManagement
             target3.Scale = 0.5F;
             target3.value = 10;
             target3.LoadContent(this.content, 700, 300, "birdy");
+
+            wall = new Tile();
+            wall.LoadContent(this.content, 400, 500, "birdy");
             
-  
+               
     
 
 
@@ -178,11 +181,14 @@ namespace GameStateManagement
 
 
 
-
+                /*
+                 * Updates
+                 */ 
                 nerd.Update(gameTime);
                 target.Update(gameTime);
                 target2.Update(gameTime);
                 target3.Update(gameTime);
+                wall.Update(gameTime);
                 if (target.sikaRectangle.Intersects(nerd.nerdRectangle) && !target.sikaHit)
                 {
                     target.sikaHit = true;
@@ -275,6 +281,7 @@ namespace GameStateManagement
             target.Draw(spriteBatch);
             target2.Draw(spriteBatch);
             target3.Draw(spriteBatch);
+            wall.Draw(spriteBatch);
 
             //For drawing the points
             spriteBatch.DrawString( 

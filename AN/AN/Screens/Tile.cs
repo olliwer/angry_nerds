@@ -10,29 +10,24 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace AN
 {
-    class Sika : Sprite
+    class Tile : Sprite
     {
-        public int value;
-        Vector2 sikaPosition;
-        public Rectangle sikaRectangle;
+        Vector2 tilePosition;
+        public Rectangle tileRectangle;
         public bool sikaHit = false;
 
- 
+
         public void LoadContent(ContentManager theContentManager, int x, int y, String assetName)
         {
             Position = new Vector2(x, y);
             base.LoadContent(theContentManager, assetName, x, y);
-            sikaPosition.X = x;
-            sikaPosition.Y = y;
+            tilePosition.X = x;
+            tilePosition.Y = y;
         }
 
         public void Update(GameTime theGameTime)
         {
-
-            Position = sikaPosition;
-            sikaRectangle = new Rectangle((int)sikaPosition.X, (int)sikaPosition.Y, 50, 100);
+            tileRectangle = new Rectangle((int)tilePosition.X, (int)tilePosition.Y, 5, 6);
         }
     }
-
-
 }
