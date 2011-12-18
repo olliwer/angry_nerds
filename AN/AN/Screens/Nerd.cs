@@ -65,7 +65,7 @@ namespace AN
 
             UpdateMouseMovement(aCurrentMouseState);
             Position = nerdPosition;
-            nerdRectangle = new Rectangle((int)nerdPosition.X, (int)nerdPosition.Y, 50, 100);
+            nerdRectangle = new Rectangle((int)nerdPosition.X, (int)nerdPosition.Y, 20, 20);
             mPreviousKeyboardState = aCurrentKeyboardState;
 
             //base.Update(theGameTime, mSpeed, mDirection);
