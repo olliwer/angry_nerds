@@ -288,6 +288,16 @@ namespace GameStateManagement
                 ammukset = nerd.ammukset;
 
 
+                /*
+                 * To win the game you need over 10 points.
+                 */
+                if (points> 10)
+                {
+                    ScreenManager.AddScreen(new VictoryMenuScreen(), ControllingPlayer);
+                }
+                
+
+
                 Vector2 aDirection = new Vector2(-1, 0);
                 Vector2 aSpeed = new Vector2(160, 0);
 

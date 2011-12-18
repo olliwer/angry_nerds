@@ -110,6 +110,7 @@
   <ItemGroup>
     <Compile Include="Game1.cs" />
     <Compile Include="Screens\Camera.cs" />
+    <None Include="Screens\DefeatMenuScreen" />
     <Compile Include="Screens\Tile.cs" />
     <Compile Include="Screens\LoadingScreen.cs" />
     <Compile Include="Screens\LoadScreen.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="Screens\MenuEntry.cs" />
     <Compile Include="Screens\MenuScreen.cs" />
     <Compile Include="Screens\PlayerIndexEventArgs.cs" />
+    <Compile Include="Screens\VictoryMenuScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
