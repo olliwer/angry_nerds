@@ -12,8 +12,7 @@ namespace AN
 {
     class Sika : Sprite
     {
-        int positionX;
-        int positionY;
+        public int value;
         Vector2 sikaPosition;
         public Rectangle sikaRectangle;
         public bool sikaHit = false;
@@ -21,11 +20,11 @@ namespace AN
  
         public void LoadContent(ContentManager theContentManager, int x, int y)
         {
-            Position = new Vector2(positionX, positionY);
+            Position = new Vector2(x, y);
             base.LoadContent(theContentManager, "birdy");
             sikaPosition.X = x;
             sikaPosition.Y = y;
-            sikaRectangle = new Rectangle((int)sikaPosition.X, (int)sikaPosition.Y, 5, 6);
+            sikaRectangle = new Rectangle((int)sikaPosition.X, (int)sikaPosition.Y, 50, 100);
 
         }
 

@@ -27,15 +27,16 @@ namespace AN
         Vector2 mouseEnd;
         public static Vector2 nerdPosition;
         Vector2 liike;
+        
 
         float vauhti = 0;
         double aika = 0;
-		int testi;
+
 
        public  Boolean osui = false; //checks if game is in state where it should move to next level.
 
         //Luodaan nerdin ympärille rectangle, jolla toteutetaan osuminen.
-        public Rectangle nerdRectangle = new Rectangle((int)nerdPosition.X, (int)nerdPosition.Y, 5, 6);
+        public Rectangle nerdRectangle = new Rectangle((int)nerdPosition.X, (int)nerdPosition.Y, 50, 100);
 
 
 

@@ -104,15 +104,18 @@ namespace GameStateManagement
             
             //tarkoitus tehdä tästä "possu"
             target = new Sika();
+            target.value = 3;
             target.Scale = 0.5F;
             target.LoadContent(this.content, 800, 500);
 
             target2 = new Sika();
             target2.Scale = 0.5F;
+            target2.value = 5;
             target2.LoadContent(this.content, 700, 600);
 
             target3 = new Sika();
             target3.Scale = 0.5F;
+            target3.value = 10;
             target3.LoadContent(this.content, 700, 300);
 
   
@@ -181,21 +184,21 @@ namespace GameStateManagement
                 if (target.sikaRectangle.Intersects(nerd.nerdRectangle)){
                     target.sikaHit = true;
                     target.Scale = 0.1F;
-                    points++;
+                    points = points + target.value;
                 }
 
                 if (target2.sikaRectangle.Intersects(nerd.nerdRectangle))
                 {
                     target2.sikaHit = true;
                     target2.Scale = 0.1F;
-                    points++;
+                    points = points + target2.value;
                 }
 
                 if (target3.sikaRectangle.Intersects(nerd.nerdRectangle))
                 {
                     target3.sikaHit = true;
                     target3.Scale = 0.1F;
-                    points++;
+                    points = points + target3.value;
                 }
 
 
