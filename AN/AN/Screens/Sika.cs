@@ -8,6 +8,9 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
+/*
+ * Sika is the class for the targets.
+ */
 namespace AN
 {
     class Sika : Sprite

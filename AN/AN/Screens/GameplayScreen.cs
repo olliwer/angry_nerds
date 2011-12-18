@@ -219,10 +219,8 @@ namespace GameStateManagement
                 target3.Update(gameTime);
                 wall.Update(gameTime);
 
-                if (wall.tileRectangle.Intersects(nerd.nerdRectangle))
-                {
-                    nerd.reset();
-                }
+
+ 
 
                 wall2.Update(gameTime);
                 wall3.Update(gameTime);
@@ -253,8 +251,40 @@ namespace GameStateManagement
                     target3.sikaHit = true;
                     target3.Scale = 0.1F;
                     points = points + target3.value;
-
                 }
+
+                if (wall.tileRectangle.Intersects(nerd.nerdRectangle))
+                {
+                    nerd.reset();
+                }
+                if (wall2.tileRectangle.Intersects(nerd.nerdRectangle))
+                {
+                    nerd.reset();
+                }
+                if (wall3.tileRectangle.Intersects(nerd.nerdRectangle))
+                {
+                    nerd.reset();
+                }
+                if (wall4.tileRectangle.Intersects(nerd.nerdRectangle))
+                {
+                    nerd.reset();
+                }
+                if (wall5.tileRectangle.Intersects(nerd.nerdRectangle))
+                {
+                    nerd.reset();
+                }
+                if (wall6.tileRectangle.Intersects(nerd.nerdRectangle))
+                {
+                    nerd.reset();
+                }
+                if (wall7.tileRectangle.Intersects(nerd.nerdRectangle))
+                {
+                    nerd.reset();
+                }
+
+                 /*
+                  * Update the projectile amount
+                  */
                 ammukset = nerd.ammukset;
 
 
