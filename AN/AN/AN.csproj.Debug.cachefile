@@ -11,6 +11,8 @@ Content\GraphicsContent\Background04.xnb
 Content\GraphicsContent\Background05.xnb
 Content\GraphicsContent\birdy.xnb
 Content\gradient.xnb
+Content\menufont.xnb
+Content\GraphicsContent\menufont.xnb
 Content\GraphicsContent\menuBackGround.xnb
 Content\tux.xnb
 Content\GraphicsContent\tux.xnb
@@ -18,5 +20,7 @@ Content\tile2.xnb
 Content\tile3.xnb
 Content\GraphicsContent\tile3.xnb
 Content\GraphicsContent\tile2.xnb
-Content\menufont.xnb
-Content\GraphicsContent\menufont.xnb
+Content\GraphicsContent\hon.xnb
+Content\GraphicsContent\dota.xnb
+Content\dota.xnb
+Content\hon.xnb

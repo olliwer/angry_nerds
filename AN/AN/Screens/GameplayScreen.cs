@@ -117,12 +117,12 @@ namespace GameStateManagement
             target2 = new Sika();
             target2.Scale = 1;
             target2.value = 5;
-            target2.LoadContent(this.content, 700, 600, "tux");
+            target2.LoadContent(this.content, 700, 600, "dota");
 
             target3 = new Sika();
             target3.Scale = 0.5F;
             target3.value = 10;
-            target3.LoadContent(this.content, 700, 300, "birdy");
+            target3.LoadContent(this.content, 700, 300, "hon");
 
             wall = new Tile();
 
