@@ -33,7 +33,7 @@ namespace AN
         {
 
             Position = sikaPosition;
-            sikaRectangle = new Rectangle((int)sikaPosition.X, (int)sikaPosition.Y, 50, 100);
+            sikaRectangle = new Rectangle((int)sikaPosition.X, (int)sikaPosition.Y, 20, 50);
         }
     }
 
