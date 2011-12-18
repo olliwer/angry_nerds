@@ -235,21 +235,18 @@ namespace GameStateManagement
 
                 if (target.sikaRectangle.Intersects(nerd.nerdRectangle) && !target.sikaHit)
                 {
-                    target.sikaHit = true;
-                    target.Scale = 0.1F;
+                    target.hit(gameTime);
                     points = points + target.value;
                 }
 
                 if (target2.sikaRectangle.Intersects(nerd.nerdRectangle) && !target2.sikaHit)
                 {
-                    target2.sikaHit = true;
-                    target2.Scale = 0.1F;
+                    target2.hit(gameTime);
                     points = points + target2.value;
                 }
                 if (target3.sikaRectangle.Intersects(nerd.nerdRectangle) && !target3.sikaHit)
                 {
-                    target3.sikaHit = true;
-                    target3.Scale = 0.1F;
+                    target3.hit(gameTime);
                     points = points + target3.value;
                 }
 

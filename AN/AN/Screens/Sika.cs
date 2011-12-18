@@ -29,8 +29,21 @@ namespace AN
             sikaPosition.Y = y;
         }
 
+        public void hit(GameTime theGameTime){
+            Position = new Vector2(sikaPosition.X, sikaPosition.Y);
+            sikaHit = true;
+            base.Update(theGameTime, 1, Position);
+    
+        }
+
         public void Update(GameTime theGameTime)
         {
+            if (sikaHit == true)
+            {
+                base.Update(theGameTime, 1, Position);
+                sikaPosition.X--;
+                sikaPosition.Y--;
+            }
 
             Position = sikaPosition;
             sikaRectangle = new Rectangle((int)sikaPosition.X, (int)sikaPosition.Y, 20, 50);
