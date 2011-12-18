@@ -36,8 +36,8 @@ namespace GameStateManagement
 
         //PISTEIDENLASKUA VARTEN
         int points = 0;
-
-
+        int ammukset = 0;
+        
 
 
         //
@@ -101,6 +101,7 @@ namespace GameStateManagement
             //m‰‰rritell‰‰n tuxi
             nerd = new Nerd();
             nerd.LoadContent(this.content, 100, 600);
+            ammukset = nerd.ammukset;
             
             //tarkoitus tehd‰ t‰st‰ "possu"
             target = new Sika();
@@ -161,7 +162,7 @@ namespace GameStateManagement
             base.Update(gameTime, otherScreenHasFocus, false);
 
 
-            
+            ammukset = nerd.ammukset;
 
 
             // Gradually fade in or out depending on whether we are covered by the pause screen.
@@ -284,7 +285,15 @@ namespace GameStateManagement
             gameFont, 
             "Points: " + points.ToString(),
             new Vector2( 
-            450,
+            600,
+            10.0f),
+            Color.Black);
+
+            spriteBatch.DrawString(
+            gameFont,
+            "Projectiles: " + ammukset.ToString(),
+            new Vector2(
+            300,
             10.0f),
             Color.Black); 
 

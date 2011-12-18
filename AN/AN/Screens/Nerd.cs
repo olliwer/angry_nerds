@@ -29,7 +29,7 @@ namespace AN
         
 
         double aika = 0;
-        int ammukset = 3;
+        public int ammukset = 3;
 
 
         public Boolean osui = false; //checks if game is in state where it should move to next level.
