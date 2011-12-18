@@ -183,21 +183,21 @@ namespace GameStateManagement
                 target.Update(gameTime);
                 target2.Update(gameTime);
                 target3.Update(gameTime);
-                if (target.sikaRectangle.Intersects(nerd.nerdRectangle))
+                if (target.sikaRectangle.Intersects(nerd.nerdRectangle) && !target.sikaHit)
                 {
                     target.sikaHit = true;
                     target.Scale = 0.1F;
                     points = points + target.value;
                 }
 
-                if (target2.sikaRectangle.Intersects(nerd.nerdRectangle))
+                if (target2.sikaRectangle.Intersects(nerd.nerdRectangle) && !target2.sikaHit)
                 {
                     target2.sikaHit = true;
                     target2.Scale = 0.1F;
                     points = points + target2.value;
                 }
                 //Console.Write(target3.sikaRectangle.Intersects(nerd.nerdRectangle));
-                if (target3.sikaRectangle.Intersects(nerd.nerdRectangle))
+                if (target3.sikaRectangle.Intersects(nerd.nerdRectangle) && !target3.sikaHit)
                 {
                     target3.sikaHit = true;
                     target3.Scale = 0.1F;
