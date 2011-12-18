@@ -102,8 +102,8 @@ namespace GameStateManagement
              * Adding the walls and targets
              */
             target = new Sika();
-            target.value = 3;
             target.Scale = 0.3F;
+            target.value = 3;
             target.LoadContent(this.content, 800, 500, "birdy");
 
             target2 = new Sika();
@@ -113,17 +113,17 @@ namespace GameStateManagement
 
             target3 = new Sika();
             target3.Scale = 0.3F;
-            target3.value = 10;
+            target3.value = 7;
             target3.LoadContent(this.content, 700, 300, "birdy");
-
+            
             target4 = new Sika();
             target4.Scale = 0.3F;
-            target4.value = 7;
+            target4.value = 10;
             target4.LoadContent(this.content, 480, 550, "birdy");
-
+            
             target5 = new Sika();
             target5.Scale = 0.3F;
-            target5.value = 10;
+            target5.value = 8;
             target5.LoadContent(this.content, 500, 200, "birdy");
 
             wall = new Tile();
@@ -252,13 +252,13 @@ namespace GameStateManagement
                     points = points + target3.value;
                 }
 
-                if (target4.sikaRectangle.Intersects(nerd.nerdRectangle) && !target.sikaHit)
+                if (target4.sikaRectangle.Intersects(nerd.nerdRectangle) && !target4.sikaHit)
                 {
                     target4.hit(gameTime);
                     points = points + target4.value;
                 }
                 
-                 if (target5.sikaRectangle.Intersects(nerd.nerdRectangle) && !target.sikaHit)
+                 if (target5.sikaRectangle.Intersects(nerd.nerdRectangle) && !target5.sikaHit)
                 {
                     target5.hit(gameTime);
                     points = points + target5.value;
