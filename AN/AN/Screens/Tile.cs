@@ -37,10 +37,10 @@ namespace AN
         public void Update(GameTime theGameTime)
         {
             if (tileHit == true)
-            {
+            {        
                 base.Update(theGameTime, 1, Position);
-                
-                //Position = new Vector2(-100, -100);
+                tilePosition.X--;
+                tilePosition.Y--;
             }
 
             tileRectangle = new Rectangle((int)tilePosition.X, (int)tilePosition.Y, 20, 10);
