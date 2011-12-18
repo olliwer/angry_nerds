@@ -35,15 +35,13 @@ namespace AN
         }
 
         public void Update(GameTime theGameTime)
-        {
-            if (tileHit == true)
+        {         
+            // Moves impacted tiles away until they hit ground, where they stop
+            if (tileHit == true && Position.Y < 700)
             {        
                 base.Update(theGameTime, 1, Position);
-                tilePosition.X++;
-                tilePosition.Y++;
-            }
-
-            tileRectangle = new Rectangle((int)tilePosition.X, (int)tilePosition.Y, 20, 10);
+            }           
+            tileRectangle = new Rectangle((int)Position.X, (int)Position.Y, 20, 10);
         }
     }
 }
