@@ -100,7 +100,7 @@ namespace GameStateManagement
 
             //m‰‰rritell‰‰n tuxi
             nerd = new Nerd();
-            nerd.LoadContent(this.content, 100, 600);
+            nerd.LoadContent(this.content, 150, 600);
             ammukset = nerd.ammukset;
             
             //tarkoitus tehd‰ t‰st‰ "possu"
@@ -118,7 +118,7 @@ namespace GameStateManagement
             target3.Scale = 0.5F;
             target3.value = 10;
             target3.LoadContent(this.content, 700, 300, "birdy");
-
+            
   
     
 

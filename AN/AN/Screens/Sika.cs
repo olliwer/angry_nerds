@@ -21,7 +21,7 @@ namespace AN
         public void LoadContent(ContentManager theContentManager, int x, int y, String assetName)
         {
             Position = new Vector2(x, y);
-            base.LoadContent(theContentManager, assetName);
+            base.LoadContent(theContentManager, assetName, x, y);
             sikaPosition.X = x;
             sikaPosition.Y = y;
             sikaRectangle = new Rectangle((int)sikaPosition.X, (int)sikaPosition.Y, 5, 6);
