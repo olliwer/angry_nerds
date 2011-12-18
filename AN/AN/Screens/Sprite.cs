@@ -43,6 +43,14 @@ class Sprite
         Size = new Rectangle(0, 0, (int)(mSpriteTexture.Width * Scale), (int)(mSpriteTexture.Height * Scale));
     }
 
+    public void LoadContent(ContentManager theContentManager, string theAssetName, int x, int y)
+    {
+        AssetName = theAssetName;
+        mSpriteTexture = theContentManager.Load<Texture2D>(theAssetName);
+
+        Size = new Rectangle(0, 0, (int)(mSpriteTexture.Width * Scale), (int)(mSpriteTexture.Height * Scale));
+    }
+
  
     //Draw the sprite to the screen
     public void Draw(SpriteBatch theSpriteBatch)
